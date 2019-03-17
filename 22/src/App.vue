@@ -4,8 +4,8 @@
       <h1 class="text-shadow font-bold">Manon turns 22</h1>
       <h2 class="text-shadow">Celebrate by donating a kitty</h2>
       <div class="flex justify-between mt-4 px-2">
-        <img :src="cyberGirl" alt="Cyber Girl">
-        <img :src="cyberGirl" alt="Cyber Girl">
+        <img src="./assets/cyber-girl.png" alt="Cyber Girl">
+        <img src="./assets/cyber-girl.png" alt="Cyber Girl">
       </div>
       <BaseButton @click="toggleModal = !toggleModal" class="mt-4">Donate a kitty</BaseButton>  
       <BaseModal v-if="toggleModal" @click="toggleModal = !toggleModal" content-classes="mx-auto flex flex-wrap justify-around">
@@ -17,10 +17,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import BaseButton from './components/BaseButton';
-import BaseModal from './components/BaseModal';
-import BasePicture from './components/BasePicture';
-import * as cyberGirl from './assets/cyber-girl.png';
+import BaseButton from './components/BaseButton.vue';
+import BaseModal from './components/BaseModal.vue';
+import BasePicture from './components/BasePicture.vue';
 
 export default Vue.extend({
   name: 'app',
@@ -31,7 +30,6 @@ export default Vue.extend({
   },
   data() { 
     return {
-      cyberGirl,
       toggleModal: false,
   }
   }
