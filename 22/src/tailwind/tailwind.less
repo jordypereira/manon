@@ -1,6 +1,6 @@
 @tailwind preflight;
 body {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5rem;
   @apply font-sans;
 }
@@ -38,7 +38,13 @@ body {
 }
 
 .bg-cyber {
-  background: url(../assets/bg-cyber.jpg);
+  background-image: url(../assets/bg-cyber.jpg);
+}
+
+@screen md {
+  .bg-cyber {
+    background-image: url(../assets/bg-cyber-md.jpg);
+  }
 }
 
 .text-shadow {
@@ -48,6 +54,7 @@ body {
 .shadow-cyber {
   box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.8);
 }
+
 
 @pink: config('colors.pink');
 

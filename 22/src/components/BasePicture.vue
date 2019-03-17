@@ -5,11 +5,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'BasePicture',
-  }
+export default {
+  name: "BasePicture"
+};
 </script>
 
 <style scoped>
-
 </style>
