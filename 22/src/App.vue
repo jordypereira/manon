@@ -11,39 +11,36 @@
           <img src="./assets/cyber-manon.png" alt="Cyber Girl" />
         </div>
       </div>
-      <BaseButton @click="selectKitty()">Donate a kitty</BaseButton>
+      <BaseButton @click="openModal()">Donate a kitty</BaseButton>
       <ZoomCenterTransition>
         <BaseModal
           v-if="showModal"
-          @click="showModal = !showModal"
+          @click.self="closeModal()"
           content-classes="mx-auto flex flex-wrap justify-around"
+          :top="getDocTop()"
         >
           <BasePicture
-            @click="selectedKitty(item.url)"
+            @click="selectedKitty(item.id, item.url)"
             v-for="item in selectImages"
             :key="item.id"
             content-classes="flex items-center justify-center m-4 cursor-pointer shadow-cyber-rotate"
+            :imageUrl="item.url"
           >
-            <img
-              :src="item.url"
-              alt="Cat Image"
-              class="max-w-full max-h-full"
-            />
           </BasePicture>
         </BaseModal>
       </ZoomCenterTransition>
-      <h2 class="my-4 text-shadow">Kitty Leaderbord</h2>
+      <h2 class="my-8 text-shadow">Kitty Leaderbord</h2>
       <div class="mx-auto flex flex-wrap justify-around">
         <div
           class="flex flex-col items-center"
-          v-for="item in Object.keys(donatedImages)"
-          :key="item"
+          v-for="item in donatedImages"
+          :key="item.url"
         >
-          <h3 class="text-shadow">{{ donatedImages[item] }}</h3>
+          <h3 class="text-shadow">{{ item.score }}</h3>
           <BasePicture
             content-classes="flex items-center justify-center m-4 shadow-cyber"
+            :imageUrl="item.url"
           >
-            <img :src="item" alt="Cat Image" class="max-w-full max-h-full" />
           </BasePicture>
         </div>
       </div>
@@ -53,6 +50,7 @@
 
 <script>
 import Vue from "vue";
+import { db } from "./main";
 import { ZoomCenterTransition } from "vue2-transitions";
 import axios from "axios";
 import BaseButton from "./components/BaseButton.vue";
@@ -70,10 +68,24 @@ export default Vue.extend({
   data() {
     return {
       showModal: false,
-      catApi: process.env.CAT_API,
+      catApi: process.env.CAT_API_KEY,
       selectAmount: 6,
       selectImages: [],
-      donatedImages: {}
+      donatedImages: []
+    };
+  },
+
+  async created() {
+    this.selectImages = await this.loadImages();
+  },
+
+  async mounted() {
+    this.preloadImages();
+  },
+
+  firestore() {
+    return {
+      donatedImages: db.collection("kitties").orderBy("score", "desc")
     };
   },
 
@@ -92,23 +104,36 @@ export default Vue.extend({
         return err;
       }
     },
-    async selectKitty() {
+    openModal() {
       this.showModal = true;
+    },
+    preloadImages() {
+      this.selectImages.forEach(img => {
+        const image = new Image();
+        image.src = img.url;
+      })
+    },
+    async closeModal() {
+      this.showModal = false;
       try {
         this.selectImages = await this.loadImages();
+        this.preloadImages();
       } catch (err) {
         this.showModal = false;
         console.log(err);
       }
     },
-    selectedKitty(url) {
-      this.showModal = false;
-      if (Object.keys(this.donatedImages).includes(url)) {
-        this.donatedImages[url] = this.donatedImages[url] + 1;
+    selectedKitty(id, url) {
+      this.closeModal();
+      if (this.donatedImages.some(kitty => kitty.url === url)) {
+        db.collection("kitties").doc(id).update({  score: kittyInDB.score + 1 }); 
       } else {
-        this.donatedImages[url] = 1;
+        db.collection('kitties').doc(id).set({ url, score: 1 })
       }
-    }
+    },
+    getDocTop() {
+      return Math.abs(document.body.getBoundingClientRect().top) + 'px';
+    },
   }
 });
 </script>

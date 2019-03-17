@@ -1,6 +1,7 @@
 <template functional>
   <div
-    class="absolute bg-pink-50 pin h-full w-full flex justify-center items-center"
+    class="absolute bg-pink-50 pin h-screen w-screen flex justify-center items-center"
+    :style="{top: props.top}"
     @click.self="listeners.click"
   >
     <div
@@ -18,8 +19,12 @@ export default {
   props: {
     contentClasses: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
+    top: {
+      type: String,
+      default: "0px",
+    },
   }
 };
 </script>
