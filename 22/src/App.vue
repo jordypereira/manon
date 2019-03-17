@@ -5,10 +5,10 @@
       <h2 class="text-shadow">Celebrate by donating a kitty</h2>
       <div class="flex justify-between my-4 px-2 w-full max-h-64">
         <div class="w-24 md:w-32 h-auto">
-          <img src="./assets/cyber-manon.png" alt="Cyber Girl" class="flip-x">
+          <img src="./assets/cyber-manon.png" alt="Cyber Girl" class="flip-x" />
         </div>
         <div class="w-24 md:w-32 h-auto">
-          <img src="./assets/cyber-manon.png" alt="Cyber Girl">
+          <img src="./assets/cyber-manon.png" alt="Cyber Girl" />
         </div>
       </div>
       <BaseButton @click="selectKitty()">Donate a kitty</BaseButton>
@@ -24,13 +24,17 @@
             :key="item.id"
             content-classes="flex items-center justify-center m-4 cursor-pointer shadow-cyber-rotate"
           >
-            <img :src="item.url" alt="Cat Image" class="max-w-full max-h-full">
+            <img
+              :src="item.url"
+              alt="Cat Image"
+              class="max-w-full max-h-full"
+            />
           </BasePicture>
         </BaseModal>
       </ZoomCenterTransition>
       <h2 class="my-4 text-shadow">Kitty Leaderbord</h2>
       <div class="mx-auto flex flex-wrap justify-around">
-        <div 
+        <div
           class="flex flex-col items-center"
           v-for="item in Object.keys(donatedImages)"
           :key="item"
@@ -39,7 +43,7 @@
           <BasePicture
             content-classes="flex items-center justify-center m-4 shadow-cyber"
           >
-            <img :src="item" alt="Cat Image" class="max-w-full max-h-full">
+            <img :src="item" alt="Cat Image" class="max-w-full max-h-full" />
           </BasePicture>
         </div>
       </div>

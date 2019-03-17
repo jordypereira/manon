@@ -1,4 +1,4 @@
-<template functional> 
+<template functional>
   <div class="w-24 h-24 bg-pink" :class="props.contentClasses" v-on="listeners">
     <slot></slot>
   </div>

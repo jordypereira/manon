@@ -3,8 +3,8 @@
     class="absolute bg-pink-50 pin h-full w-full flex justify-center items-center"
     @click.self="listeners.click"
   >
-    <div 
-      class="bg-white opacity-100 shadow-cyber w-4/5" 
+    <div
+      class="bg-white opacity-100 shadow-cyber w-4/5"
       :class="props.contentClasses"
     >
       <slot></slot>
