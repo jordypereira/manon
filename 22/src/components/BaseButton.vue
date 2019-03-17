@@ -9,6 +9,3 @@ export default {
   name: "BaseButton"
 };
 </script>
-
-<style>
-</style>
