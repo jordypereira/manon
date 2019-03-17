@@ -1,0 +1,56 @@
+@tailwind preflight;
+body {
+  font-size: 12px;
+  line-height: 1.5rem;
+  @apply font-sans;
+}
+
+@media all and (min-width: 479px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media all and (min-width: 769px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media all and (min-width: 1199px) {
+  body {
+    font-size: 18px;
+  }
+}
+@media all and (min-width: 1691px) {
+  body {
+    font-size: 20px;
+  }
+}
+@tailwind components;
+
+/* Add custom components Here */
+
+@tailwind utilities;
+
+/* Add custom utilities here */
+.gradient-dotted {
+  background-image: radial-gradient(#bfc0c1 7.2%, transparent 0);
+  background-size: 25px 25px;
+}
+
+.bg-cyber {
+  background: url(../assets/bg-cyber.jpg);
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 0 config('colors.pink');
+}
+
+.shadow-cyber {
+  box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.8);
+}
+
+@pink: config('colors.pink');
+
+.bg-pink-50 {
+  background: fadeout(#FE6556, 50%);
+}

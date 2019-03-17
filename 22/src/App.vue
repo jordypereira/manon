@@ -1,29 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="min-h-screen min-w-screen gradient-dotted bg-cyber relative">
+    <div class="container mx-auto text-center pt-8">
+      <h1 class="text-shadow font-bold">Manon turns 22</h1>
+      <h2 class="text-shadow">Celebrate by donating a kitty</h2>
+      <div class="flex justify-between mt-4 px-2">
+        <img :src="cyberGirl" alt="Cyber Girl">
+        <img :src="cyberGirl" alt="Cyber Girl">
+      </div>
+      <BaseButton @click="toggleModal = !toggleModal" class="mt-4">Donate a kitty</BaseButton>  
+      <BaseModal v-if="toggleModal" @click="toggleModal = !toggleModal" content-classes="mx-auto flex flex-wrap justify-around">
+        <BasePicture v-for="item in 6" :key="item" class="m-4"></BasePicture>
+      </BaseModal>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import BaseButton from './components/BaseButton';
+import BaseModal from './components/BaseModal';
+import BasePicture from './components/BasePicture';
+import * as cyberGirl from './assets/cyber-girl.png';
 
 export default Vue.extend({
   name: 'app',
   components: {
-    HelloWorld,
+    BaseButton,
+    BaseModal,
+    BasePicture,
   },
+  data() { 
+    return {
+      cyberGirl,
+      toggleModal: false,
+  }
+  }
 });
 </script>
 
 <style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
