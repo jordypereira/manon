@@ -1,4 +1,5 @@
 import Vue from "vue";
+require("dotenv").config();
 import "./plugins/axios";
 import App from "./App.vue";
 import "./registerServiceWorker";
@@ -9,7 +10,6 @@ Vue.use(VueFire);
 
 // Tailwind
 import "./tailwind/tailwind.less";
-require("dotenv").config();
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,

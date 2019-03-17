@@ -33,6 +33,7 @@ body {
 
 /* Add custom utilities here */
 .gradient-dotted {
+  background: fadeout(#fff, 10%);
   background-image: radial-gradient(#bfc0c1 7.2%, transparent 0);
   background-size: 25px 25px;
 }
@@ -55,7 +56,17 @@ body {
   box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.8);
 }
 
+.celebrate-walk {
+  animation: walkX 2s ease-in-out infinite alternate;
+}
+.celebrate-walk-reverse {
+  animation: walkX 2s ease-in-out infinite alternate-reverse;
+}
+
 .shadow-cyber-rotate {
+  animation: hoverShadow 0.7s ease-in-out infinite;
+}
+.shadow-cyber-rotate-hover {
   box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.8);
   &:hover {
     animation: hoverShadow 0.7s ease-in-out infinite;
@@ -86,5 +97,23 @@ body {
   }
   75% {
     box-shadow: 0.5rem -0.5rem 0 rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes walkX {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(200px, 200px, 0);
+  }
+  60% {
+    transform: translate3d(-200px, -200px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(2);
   }
 }
