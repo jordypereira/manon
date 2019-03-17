@@ -29,6 +29,10 @@
           content-classes="mx-auto flex flex-wrap justify-around gradient-dotted"
           :top="getDocTop()"
         >
+          <!-- <h3 class="text-shadow">Upload your kitty and make Manon proud!</h3>
+          <form @submit="uploadKitty()" enctype="multipart/form-data">
+            <input type="file" name="kitty" id="kitty">
+          </form> -->
           <BasePicture
             @click="selectedKitty(item.id, item.url)"
             v-for="item in selectImages"
@@ -72,6 +76,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      catApi: process.env.VUE_APP_CAT_API_KEY,
       showModal: false,
       selectAmount: 6,
       selectImages: [],
@@ -94,7 +99,7 @@ export default Vue.extend({
   methods: {
     async loadImages() {
       try {
-        axios.defaults.headers.common["x-api-key"] = process.env.CAT_API_KEY;
+        axios.defaults.headers.common["x-api-key"] = this.catApi;
         const response = await axios.get(
           "https://api.thecatapi.com/v1/images/search",
           { params: { limit: this.selectAmount, size: "thumb" } }
@@ -155,6 +160,20 @@ export default Vue.extend({
       this.celebrate = false;
       clearTimeout(this.celebrateTimeout);
     },
+    // async uploadKitty() {
+    //   try {
+    //     axios.defaults.headers.common["x-api-key"] = this.catApi;
+    //     const response = await axios.post(
+    //       "https://api.thecatapi.com/v1/images/search",
+    //       { params: { limit: this.selectAmount, size: "thumb", category_ids: [5, 2, 1, 15] } }
+    //     );
+
+    //     return response.data;
+    //   } catch (err) {
+    //     console.log(err);
+    //     return err;
+    //   }
+    // },
   }
 });
 </script>

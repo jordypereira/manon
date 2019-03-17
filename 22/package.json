@@ -9,7 +9,6 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "dotenv": "^7.0.0",
     "firebase": "^5.9.0",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.6",
