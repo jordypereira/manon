@@ -1,12 +1,12 @@
 <template functional>
   <div
     class="absolute bg-pink-50 pin h-screen w-screen flex justify-center items-center"
-    :style="{top: props.top}"
+    :style="{ top: props.top }"
     @click.self="listeners.click"
   >
     <div
       class="bg-white opacity-100 shadow-cyber w-4/5"
-      :class="props.contentClasses"
+      :class="[props.contentClasses, data.class, data.staticClass]"
     >
       <slot></slot>
     </div>
@@ -19,12 +19,12 @@ export default {
   props: {
     contentClasses: {
       type: String,
-      default: "",
+      default: ""
     },
     top: {
       type: String,
-      default: "0px",
-    },
+      default: "0px"
+    }
   }
 };
 </script>

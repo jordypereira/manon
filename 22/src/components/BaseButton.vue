@@ -1,7 +1,7 @@
 <template functional>
   <button
-    class="bg-pink text-white shadow-cyber-rotate-hover py-6 px-8 rounded cursor-pointer"
-    :class="props.contentClasses"
+    class="bg-pink text-white shadow-cyber-rotate-hover py-6 px-8 cursor-pointer"
+    :class="[props.contentClasses, data.class, data.staticClass]"
     v-on="listeners"
   >
     <slot></slot>
@@ -13,9 +13,8 @@ export default {
   name: "BaseButton",
   props: {
     contentClasses: {
-      type: Object,
-      default: "",
-    },
-  },
+      type: [String, Object]
+    }
+  }
 };
 </script>

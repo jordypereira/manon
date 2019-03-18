@@ -1,3 +1,5 @@
+@import 'pyro.css';
+
 @tailwind preflight;
 body {
   font-size: 14px;
@@ -65,6 +67,16 @@ body {
 .celebrate-walk-reverse {
   animation: walkX 2s ease-in-out infinite alternate-reverse;
 }
+.celebrate-rotate {
+  animation: rotate 1s ease-in-out infinite alternate-reverse;
+}
+.celebrate-growAndRotate {
+  animation: growAndRotate 2s ease-in-out infinite alternate;
+}
+
+.celebrate-grow {
+  animation: grow 3s ease-in-out infinite alternate;
+}
 
 .shadow-cyber-rotate {
   animation: hoverShadow 0.7s ease-in-out infinite;
@@ -118,5 +130,29 @@ body {
   }
   100% {
     transform: translate3d(0, 0, 0) scale(2);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: 0;
+  }
+  100% {
+    transform: rotateZ(180deg);
+  }
+}
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(4);
+  }
+}
+@keyframes growAndRotate {
+  0% {
+    transform: scale(1) rotateZ(0);
+  }
+  100% {
+    transform: scale(4) rotateZ(180deg);
   }
 }
