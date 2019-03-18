@@ -42,7 +42,7 @@
           ></BasePicture>
         </BaseModal>
       </ZoomCenterTransition>
-      <h2 class="my-8 text-shadow">Kitty Leaderbord</h2>
+      <h2 class="mt-64 mb-8 text-shadow">Donated kitties</h2>
       <div class="mx-auto flex flex-wrap justify-around">
         <div class="flex flex-col items-center" v-for="item in donatedImages" :key="item.url">
           <h3 class="text-shadow">{{ item.score }}</h3>
