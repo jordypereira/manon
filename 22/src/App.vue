@@ -3,7 +3,7 @@
     <div class="container mx-auto text-center pt-8">
       <h1 class="text-shadow font-bold">Manon turns 22</h1>
       <h2 class="text-shadow">Celebrate by donating a kitty</h2>
-      <div class="flex justify-between my-4 px-2 w-screen max-h-64">
+      <div class="flex justify-between my-4 px-2 w-full max-h-64">
         <div class="w-24 md:w-32 h-auto">
           <img
             src="./assets/cyber-manon.png"
