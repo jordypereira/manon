@@ -37,7 +37,7 @@
           class="py-4 mx-auto flex flex-col items-center gradient-dotted"
           :top="getDocTop()"
         >
-          <h3 class="text-shadow">Upload your kitty and make Manon proud!</h3>
+          <h3 class="text-shadow mx-2">Upload your kitty and make Manon proud!</h3>
           <form @submit="uploadKitty()" enctype="multipart/form-data">
             <input
               type="file"
@@ -129,7 +129,7 @@ export default Vue.extend({
 
   firestore() {
     return {
-      donatedImages: db.collection("kitties").orderBy("created")
+      donatedImages: db.collection("kitties").orderBy("created", "desc")
     };
   },
 
@@ -240,6 +240,7 @@ export default Vue.extend({
         this.error_message = error.response.data.message;
         this.uploading = false;
         this.image_file = null;
+        this.stopCelebration();
       }
     }
   }
