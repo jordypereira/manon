@@ -1,13 +1,20 @@
 <template>
-  <div class="min-h-screen min-w-screen bg-cyber bg-scroll relative" :class="{ 'pyro': celebrate }">
+  <div
+    class="min-h-screen min-w-screen bg-cyber bg-scroll relative"
+    :class="{ pyro: celebrate }"
+  >
     <div class="before"></div>
     <div class="after"></div>
     <div class="container mx-auto text-center pt-8">
-      <h1 class="text-shadow font-bold" :class="{ 'celebrate-rotate': celebrate }">Manon turns 22</h1>
-      <h2
-        class="text-shadow"
+      <h1
+        class="text-shadow font-bold"
         :class="{ 'celebrate-rotate': celebrate }"
-      >Celebrate by donating a kitty</h2>
+      >
+        Manon turns 22
+      </h1>
+      <h2 class="text-shadow" :class="{ 'celebrate-rotate': celebrate }">
+        Celebrate by donating a kitty
+      </h2>
       <div class="flex justify-between my-4 px-2 w-full max-h-64">
         <div class="w-24 md:w-32 h-auto">
           <img
@@ -15,19 +22,20 @@
             alt="Cyber Girl"
             class="flip-x"
             :class="{ 'celebrate-walk': celebrate }"
-          >
+          />
         </div>
         <BaseButton
           @click="openModal()"
           class="self-center"
           :class="{ 'shadow-cyber-rotate': celebrate }"
-        >Donate a kitty</BaseButton>
+          >Donate a kitty</BaseButton
+        >
         <div class="w-24 md:w-32 h-auto">
           <img
             src="./assets/cyber-manon.png"
             alt="Cyber Girl"
             :class="{ 'celebrate-walk-reverse': celebrate }"
-          >
+          />
         </div>
       </div>
       <ZoomCenterTransition>
@@ -37,7 +45,9 @@
           class="py-4 mx-auto flex flex-col items-center gradient-dotted"
           :top="getDocTop()"
         >
-          <h3 class="text-shadow mx-2">Upload your kitty and make Manon proud!</h3>
+          <h3 class="text-shadow mx-2">
+            Upload your kitty and make Manon proud!
+          </h3>
           <form @submit="uploadKitty()" enctype="multipart/form-data">
             <input
               type="file"
@@ -45,23 +55,26 @@
               ref="image"
               accept="image/*"
               @change="onFilePicked"
-            >
+            />
           </form>
           <BaseButton
             class="my-4"
             @click="pickFile"
             :class="{ 'shadow-cyber-rotate': uploading }"
-          >{{uploading ? 'Bringing kitty to Manon..' : 'Choose a kitty'}}</BaseButton>
-          <p v-if="error_message" class="text-shadow shadow-cyber-rotate my-4">{{error_message}}</p>
-
+            >{{
+              uploading ? "Bringing kitty to Manon.." : "Choose a kitty"
+            }}</BaseButton
+          >
+          <p v-if="error_message" class="text-shadow shadow-cyber-rotate my-4">
+            {{ error_message }}
+          </p>
 
           <template v-if="!uploading">
             <h3 class="mt-8 text-shadow">Or choose a random kitty</h3>
             <div class="flex flex-wrap justify-around">
-              <template 
-                v-for="item in selectImages">
+              <template v-for="item in selectImages">
                 <BasePicture
-                v-if="item.url"
+                  v-if="item.url"
                   @click="addKitty(item.id, item.url)"
                   :key="item.id"
                   class="flex items-center justify-center m-4 cursor-pointer shadow-cyber-rotate-hover"
@@ -72,8 +85,11 @@
           </template>
         </BaseModal>
       </ZoomCenterTransition>
-      <DonatedWall :items="donatedImages"/>
-      <div v-if="celebrate && lastSelectedKittyUrl" class="absolute pin h-screen w-screen flex justify-center items-center celebrate-growAndRotate">
+      <DonatedWall :items="donatedImages" />
+      <div
+        v-if="celebrate && lastSelectedKittyUrl"
+        class="absolute pin h-screen w-screen flex justify-center items-center celebrate-growAndRotate"
+      >
         <BasePicture
           class="flex items-center justify-center shadow-cyber-rotate-hover"
           :imageUrl="lastSelectedKittyUrl"
@@ -118,7 +134,7 @@ export default Vue.extend({
       uploading: false,
       uploaded_image: {},
       error_message: null,
-      lastSelectedKittyUrl: '',
+      lastSelectedKittyUrl: ""
     };
   },
 
@@ -188,7 +204,7 @@ export default Vue.extend({
       this.celebrate = false;
       clearTimeout(this.celebrateTimeout);
       this.uploaded_image = {};
-      this.lastSelectedKittyUrl = '';
+      this.lastSelectedKittyUrl = "";
     },
     preloadLastKitty(url) {
       this.lastSelectedKittyUrl = url;

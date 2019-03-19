@@ -1,7 +1,9 @@
 <template functional>
-  <div class="w-24 h-24 bg-pink"
-  :class="[props.contentClasses, data.class, data.staticClass]"
-  v-on="listeners">
+  <div
+    class="w-24 h-24 bg-pink"
+    :class="[props.contentClasses, data.class, data.staticClass]"
+    v-on="listeners"
+  >
     <slot>
       <img
         :src="props.imageUrl"
