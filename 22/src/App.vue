@@ -18,7 +18,7 @@
       <div class="flex justify-between my-4 px-2 w-full max-h-64">
         <div class="w-24 md:w-32 h-auto">
           <img
-            src="./assets/images/cyber-manon.png"
+            src="/images/cyber-manon.png"
             alt="Cyber Girl"
             class="flip-x"
             :class="{ 'celebrate-walk': celebrate }"
@@ -32,7 +32,7 @@
         >
         <div class="w-24 md:w-32 h-auto">
           <img
-            src="./assets/images/cyber-manon.png"
+            src="/images/cyber-manon.png"
             alt="Cyber Girl"
             :class="{ 'celebrate-walk-reverse': celebrate }"
           />
