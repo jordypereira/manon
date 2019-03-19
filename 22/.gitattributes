@@ -1,2 +1,2 @@
 src/assets/cyber-manon.png filter=lfs diff=lfs merge=lfs -text
-src/assets/bg-cyber-md.jpg filter=lfs diff=lfs merge=lfs -text
+src/assets/bg-cyber.jpg filter=lfs diff=lfs merge=lfs -text
