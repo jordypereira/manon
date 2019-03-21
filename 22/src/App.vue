@@ -17,20 +17,26 @@
       </h2>
       <div class="flex justify-between my-4 px-2 w-full max-h-64">
         <div class="w-24 md:w-32 h-auto">
-        <picture>
-          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp" type="image/webp"
-            class="flip-x"
-            :class="{ 'celebrate-walk': celebrate }">
-          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png" type="image/png"
-            class="flip-x"
-            :class="{ 'celebrate-walk': celebrate }">
-          <img
-            src="./assets/images/cyber-manon.png"
-            alt="Cyber Girl"
-            class="flip-x"
-            :class="{ 'celebrate-walk': celebrate }"
-          />
-        </picture>
+          <picture>
+            <source
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp"
+              type="image/webp"
+              class="flip-x"
+              :class="{ 'celebrate-walk': celebrate }"
+            />
+            <source
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png"
+              type="image/png"
+              class="flip-x"
+              :class="{ 'celebrate-walk': celebrate }"
+            />
+            <img
+              src="./assets/images/cyber-manon.png"
+              alt="Cyber Girl"
+              class="flip-x"
+              :class="{ 'celebrate-walk': celebrate }"
+            />
+          </picture>
         </div>
         <BaseButton
           @click="openModal()"
@@ -39,20 +45,26 @@
           >Donate a kitty</BaseButton
         >
         <div class="w-24 md:w-32 h-auto">
-        <picture>
-          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp" type="image/webp"
-            class="flip-x"
-            :class="{ 'celebrate-walk': celebrate }">
-          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png" type="image/png"
-            class="flip-x"
-            :class="{ 'celebrate-walk': celebrate }">
-          <img
-            src="./assets/images/cyber-manon.png"
-            alt="Cyber Girl"
-            class="flip-x"
-            :class="{ 'celebrate-walk-reverse': celebrate }"
-          />
-        </picture>
+          <picture>
+            <source
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp"
+              type="image/webp"
+              class="flip-x"
+              :class="{ 'celebrate-walk': celebrate }"
+            />
+            <source
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png"
+              type="image/png"
+              class="flip-x"
+              :class="{ 'celebrate-walk': celebrate }"
+            />
+            <img
+              src="./assets/images/cyber-manon.png"
+              alt="Cyber Girl"
+              class="flip-x"
+              :class="{ 'celebrate-walk-reverse': celebrate }"
+            />
+          </picture>
         </div>
       </div>
       <ZoomCenterTransition>
@@ -112,6 +124,7 @@
           :imageUrl="lastSelectedKittyUrl"
         ></BasePicture>
       </div>
+      <TheFooter class="text-shadow"></TheFooter>
     </div>
   </div>
 </template>
@@ -125,6 +138,7 @@ import BaseButton from "./components/BaseButton.vue";
 import BaseModal from "./components/BaseModal.vue";
 import BasePicture from "./components/BasePicture.vue";
 import DonatedWall from "./components/DonatedWall.vue";
+import TheFooter from "./components/TheFooter.vue";
 import randomSound from "./assets/js/randomCatSound";
 
 export default Vue.extend({
@@ -134,7 +148,8 @@ export default Vue.extend({
     BaseModal,
     BasePicture,
     ZoomCenterTransition,
-    DonatedWall
+    DonatedWall,
+    TheFooter,
   },
   data() {
     return {
@@ -196,6 +211,7 @@ export default Vue.extend({
       this.error_message = "";
     },
     addKitty(id, url) {
+      this.$ga.event('Donations', 'Any Kitty', url);
       this.playCelebration();
       this.closeModal();
       const kittyInDB = this.donatedImages.find(kitty => kitty.url === url);
@@ -269,6 +285,7 @@ export default Vue.extend({
         this.uploading = false;
         this.image_file = null;
         this.addKitty(response.data.id, response.data.url);
+        this.$ga.event('Upload', 'Custom Kitty', response.data.url);
       } catch (error) {
         this.error_message = error.response.data.message;
         this.uploading = false;

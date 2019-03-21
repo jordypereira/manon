@@ -5,6 +5,11 @@ import "./registerServiceWorker";
 import VueFire from "vuefire";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import VueAnalytics from "vue-analytics";
+
+Vue.use(VueAnalytics, {
+  id: process.env.VUE_APP_GA
+});
 Vue.use(VueFire);
 
 // Tailwind
