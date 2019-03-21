@@ -17,12 +17,20 @@
       </h2>
       <div class="flex justify-between my-4 px-2 w-full max-h-64">
         <div class="w-24 md:w-32 h-auto">
+        <picture>
+          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp" type="image/webp"
+            class="flip-x"
+            :class="{ 'celebrate-walk': celebrate }">
+          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png" type="image/png"
+            class="flip-x"
+            :class="{ 'celebrate-walk': celebrate }">
           <img
-            src="/images/cyber-manon.png"
+            src="./assets/images/cyber-manon.png"
             alt="Cyber Girl"
             class="flip-x"
             :class="{ 'celebrate-walk': celebrate }"
           />
+        </picture>
         </div>
         <BaseButton
           @click="openModal()"
@@ -31,11 +39,20 @@
           >Donate a kitty</BaseButton
         >
         <div class="w-24 md:w-32 h-auto">
+        <picture>
+          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp" type="image/webp"
+            class="flip-x"
+            :class="{ 'celebrate-walk': celebrate }">
+          <source srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png" type="image/png"
+            class="flip-x"
+            :class="{ 'celebrate-walk': celebrate }">
           <img
-            src="/images/cyber-manon.png"
+            src="./assets/images/cyber-manon.png"
             alt="Cyber Girl"
+            class="flip-x"
             :class="{ 'celebrate-walk-reverse': celebrate }"
           />
+        </picture>
         </div>
       </div>
       <ZoomCenterTransition>
