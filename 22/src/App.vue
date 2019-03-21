@@ -7,15 +7,15 @@
     <div class="after"></div>
     <div class="container mx-auto text-center pt-8">
       <h1
-        class="text-shadow font-bold"
+        class="text-shadow font-bold text-white"
         :class="{ 'celebrate-rotate': celebrate }"
       >
         Manon turns 22
       </h1>
-      <h2 class="text-shadow mt-4" :class="{ 'celebrate-rotate': celebrate }">
+      <h2 class="text-shadow mt-4 text-white" :class="{ 'celebrate-rotate': celebrate }">
         Celebrate by donating a kitty
       </h2>
-      <div class="flex justify-between my-4 px-2 w-full max-h-64">
+      <div class="flex justify-around my-4 px-2 w-full max-h-64">
         <div class="w-12 md:w-20 h-auto">
           <picture>
             <source
@@ -40,7 +40,7 @@
         </div>
         <BaseButton
           @click="openModal()"
-          class="self-center flex-grow  mx-4"
+          class="self-center mx-4"
           :class="{ 'shadow-cyber-rotate': celebrate }"
           >Donate a kitty</BaseButton
         >
