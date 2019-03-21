@@ -15,7 +15,7 @@
       <h2 class="text-shadow mt-4 text-white" :class="{ 'celebrate-rotate': celebrate }">
         Celebrate by donating a kitty
       </h2>
-      <div class="flex justify-around my-4 px-2 w-full max-h-64">
+      <div class="flex justify-around my-4 px-2 max-h-64">
         <div class="w-12 md:w-20 h-auto">
           <picture>
             <source
