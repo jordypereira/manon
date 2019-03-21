@@ -12,7 +12,7 @@
       >
         Manon turns 22
       </h1>
-      <h2 class="text-shadow" :class="{ 'celebrate-rotate': celebrate }">
+      <h2 class="text-shadow mt-4" :class="{ 'celebrate-rotate': celebrate }">
         Celebrate by donating a kitty
       </h2>
       <div class="flex justify-between my-4 px-2 w-full max-h-64">
