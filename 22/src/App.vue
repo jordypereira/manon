@@ -16,16 +16,16 @@
         Celebrate by donating a kitty
       </h2>
       <div class="flex justify-between my-4 px-2 w-full max-h-64">
-        <div class="w-24 md:w-32 h-auto">
+        <div class="w-12 md:w-20 h-auto">
           <picture>
             <source
-              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp"
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553210648/cyber-manon.webp"
               type="image/webp"
               class="flip-x"
               :class="{ 'celebrate-walk': celebrate }"
             />
             <source
-              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png"
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553210648/cyber-manon.png"
               type="image/png"
               class="flip-x"
               :class="{ 'celebrate-walk': celebrate }"
@@ -40,28 +40,25 @@
         </div>
         <BaseButton
           @click="openModal()"
-          class="self-center"
+          class="self-center flex-grow  mx-4"
           :class="{ 'shadow-cyber-rotate': celebrate }"
           >Donate a kitty</BaseButton
         >
-        <div class="w-24 md:w-32 h-auto">
+        <div class="w-12 md:w-20 h-auto">
           <picture>
             <source
-              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.webp"
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553210648/cyber-manon.webp"
               type="image/webp"
-              class="flip-x"
               :class="{ 'celebrate-walk': celebrate }"
             />
             <source
-              srcset="https://res.cloudinary.com/perjor/image/upload/v1553189325/cyber-manon.png"
+              srcset="https://res.cloudinary.com/perjor/image/upload/v1553210648/cyber-manon.png"
               type="image/png"
-              class="flip-x"
               :class="{ 'celebrate-walk': celebrate }"
             />
             <img
               src="./assets/images/cyber-manon.png"
               alt="Cyber Girl"
-              class="flip-x"
               :class="{ 'celebrate-walk-reverse': celebrate }"
             />
           </picture>
