@@ -9,7 +9,7 @@
         rel="noopener"
         target="_blank"
         class="no-underline hover:text-brand transition-1 px-1"
-        :class="`text-${link.color}`"
+        :class="`${link.color}`"
         >{{ link.name }}</a
       >
     </p>
@@ -26,19 +26,19 @@ export default {
           id: 1,
           name: "Twitter",
           url: "https://twitter.com/_perjor",
-          color: "blue-light"
+          color: "text-blue-light"
         },
         {
           id: 2,
           name: "Instagram",
           url: "https://instagram.com/jordy_pereira",
-          color: "pink-light"
+          color: "text-pink-light"
         },
         {
           id: 3,
           name: "Github",
           url: "https://github.com/perjor",
-          color: "white"
+          color: "text-white"
         }
       ]
     };
