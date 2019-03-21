@@ -149,7 +149,7 @@ export default Vue.extend({
     BasePicture,
     ZoomCenterTransition,
     DonatedWall,
-    TheFooter,
+    TheFooter
   },
   data() {
     return {
@@ -211,7 +211,7 @@ export default Vue.extend({
       this.error_message = "";
     },
     addKitty(id, url) {
-      this.$ga.event('Donations', 'Any Kitty', url);
+      this.$ga.event("Donations", "Any Kitty", url);
       this.playCelebration();
       this.closeModal();
       const kittyInDB = this.donatedImages.find(kitty => kitty.url === url);
@@ -285,7 +285,7 @@ export default Vue.extend({
         this.uploading = false;
         this.image_file = null;
         this.addKitty(response.data.id, response.data.url);
-        this.$ga.event('Upload', 'Custom Kitty', response.data.url);
+        this.$ga.event("Upload", "Custom Kitty", response.data.url);
       } catch (error) {
         this.error_message = error.response.data.message;
         this.uploading = false;

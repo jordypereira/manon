@@ -10,37 +10,38 @@
         target="_blank"
         class="no-underline hover:text-brand transition-1 px-1"
         :class="`text-${link.color}`"
-      >{{ link.name }}</a>
+        >{{ link.name }}</a
+      >
     </p>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'TheFooter',
+  name: "TheFooter",
   data() {
     return {
       links: [
         {
           id: 1,
-          name: 'Twitter',
-          url: 'https://twitter.com/_perjor',
-          color: 'blue-light',
+          name: "Twitter",
+          url: "https://twitter.com/_perjor",
+          color: "blue-light"
         },
         {
           id: 2,
-          name: 'Instagram',
-          url: 'https://instagram.com/jordy_pereira',
-          color: 'pink-light',
+          name: "Instagram",
+          url: "https://instagram.com/jordy_pereira",
+          color: "pink-light"
         },
         {
           id: 3,
-          name: 'Github',
-          url: 'https://github.com/perjor',
-          color: 'white',
-        },
-      ],
+          name: "Github",
+          url: "https://github.com/perjor",
+          color: "white"
+        }
+      ]
     };
-  },
-}
+  }
+};
 </script>
