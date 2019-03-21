@@ -292,7 +292,10 @@ export default Vue.extend({
         this.image_file = null;
         this.stopCelebration();
       }
-    }
+    },
+    track() {
+      this.$ga.page('/');
+    },
   }
 });
 </script>
