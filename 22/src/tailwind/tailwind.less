@@ -46,6 +46,48 @@ body {
   background-attachment: fixed;
 }
 
+.original-kitty {
+  @apply absolute pin-t pin-r;
+}
+#star-five {
+  @apply absolute;
+  display: block;
+  color: config('colors.yellow-light');
+  top: 10px;
+  width: 0px;
+  height: 0px;
+  border-right: 20px solid transparent;
+  border-bottom: 14px solid config('colors.yellow-light');
+  border-left: 20px solid transparent;
+  transform: rotate(35deg);
+}
+#star-five:before {
+  border-bottom: 16px solid config('colors.yellow-light');
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -9px;
+  left: -13px;
+  display: block;
+  content: '';
+  transform: rotate(-35deg);
+}
+#star-five:after {
+  position: absolute;
+  display: block;
+  color: config('colors.yellow-light');
+  top: 0.7px;
+  left: -21px;
+  width: 0px;
+  height: 0px;
+  border-right: 20px solid transparent;
+  border-bottom: 14px solid config('colors.yellow-light');
+  border-left: 20px solid transparent;
+  transform: rotate(-70deg);
+  content: '';
+}
 .webp .bg-cyber {
   background-image: url(https://res.cloudinary.com/perjor/image/upload/c_scale,h_720,w_1257/v1553188712/bg-cyber.webp);
 }
