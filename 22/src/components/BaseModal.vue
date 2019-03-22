@@ -1,6 +1,6 @@
 <template functional>
   <div
-    class="absolute bg-pink-50 pin h-screen w-screen flex justify-center items-center"
+    class="absolute bg-pink-50 pin h-screen w-screen flex justify-center items-center z-50"
     :style="{ top: props.top }"
     @click.self="listeners.click"
   >
