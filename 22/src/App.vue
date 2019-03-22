@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen min-w-screen bg-cyber bg-scroll relative"
+    class="min-h-screen min-w-screen bg-cyber relative"
     :class="{ pyro: celebrate }"
   >
     <div class="before"></div>
