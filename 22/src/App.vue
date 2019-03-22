@@ -12,7 +12,10 @@
       >
         Manon turns 22
       </h1>
-      <h2 class="text-shadow mt-4 text-white" :class="{ 'celebrate-rotate': celebrate }">
+      <h2
+        class="text-shadow mt-4 text-white"
+        :class="{ 'celebrate-rotate': celebrate }"
+      >
         Celebrate by donating a kitty
       </h2>
       <div class="flex justify-around my-4 px-2 max-h-64">
@@ -163,7 +166,6 @@ export default Vue.extend({
       uploading: false,
       uploaded_image: {},
       error_message: null,
-      lastSelectedKittyUrl: ""
     };
   },
 
@@ -207,7 +209,7 @@ export default Vue.extend({
       this.showModal = false;
       this.error_message = "";
     },
-    addKitty(id, url) {
+    addKitty(id, url, type = 'random') {
       this.$ga.event("Donations", "Any Kitty", url);
       this.playCelebration();
       this.closeModal();
@@ -216,7 +218,7 @@ export default Vue.extend({
         const timestamp = new Date();
         db.collection("kitties")
           .doc(id)
-          .set({ url, created: timestamp });
+          .set({ url, created: timestamp, type: type });
       }
     },
     getDocTop() {
@@ -281,7 +283,7 @@ export default Vue.extend({
         this.uploaded_image = response.data;
         this.uploading = false;
         this.image_file = null;
-        this.addKitty(response.data.id, response.data.url);
+        this.addKitty(response.data.id, response.data.url, 'original');
         this.$ga.event("Upload", "Custom Kitty", response.data.url);
       } catch (error) {
         this.error_message = error.response.data.message;
@@ -291,8 +293,8 @@ export default Vue.extend({
       }
     },
     track() {
-      this.$ga.page('/');
-    },
+      this.$ga.page("/");
+    }
   }
 });
 </script>

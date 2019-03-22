@@ -1,6 +1,8 @@
 <template>
   <section>
-    <h2 class="mt-16 mb-8 px-2 text-shadow text-white">Donated kitties Wall of fame</h2>
+    <h2 class="mt-16 mb-8 px-2 text-shadow text-white">
+      Donated kitties Wall of fame
+    </h2>
     <div class="mx-auto flex flex-wrap justify-around">
       <a
         :href="item.url"
