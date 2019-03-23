@@ -176,7 +176,7 @@ export default Vue.extend({
 
   firestore() {
     return {
-      donatedImages: db.collection("kitties").orderBy("created", "desc")
+      donatedImages: db.collection("kitties").orderBy("created", "desc").limit(50)
     };
   },
 
