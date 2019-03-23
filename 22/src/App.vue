@@ -99,6 +99,10 @@
           </template>
         </BaseModal>
       </ZoomCenterTransition>
+      <h2 class="mt-16 mb-2 px-2 text-shadow text-white">
+        Donated kitties Wall of fame
+      </h2>
+      <p class="text-white text-shadow">{{donatedImages.length}} kitties have been donated!</p>
       <DonatedWall :items="kittiesPaginated"/>
 
       <BaseButton
