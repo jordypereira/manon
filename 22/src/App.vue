@@ -1,23 +1,16 @@
 <template>
-  <div
-    class="min-h-screen min-w-screen bg-cyber bg-scroll relative"
-    :class="{ pyro: celebrate }"
-  >
+  <div class="min-h-screen min-w-screen bg-cyber bg-scroll relative" :class="{ pyro: celebrate }">
     <div class="before"></div>
     <div class="after"></div>
     <div class="container mx-auto text-center pt-8">
       <h1
         class="text-shadow font-bold text-white"
         :class="{ 'celebrate-rotate': celebrate }"
-      >
-        Manon turns 22
-      </h1>
+      >Manon turns 22</h1>
       <h2
         class="text-shadow mt-4 text-white"
         :class="{ 'celebrate-rotate': celebrate }"
-      >
-        Celebrate by donating a kitty
-      </h2>
+      >Celebrate by donating a kitty</h2>
       <div class="flex justify-around my-4 px-2 max-h-64">
         <div class="w-12 md:w-20 h-auto">
           <picture>
@@ -26,44 +19,43 @@
               type="image/webp"
               class="flip-x"
               :class="{ 'celebrate-walk': celebrate }"
-            />
+            >
             <source
               srcset="https://res.cloudinary.com/perjor/image/upload/v1553210648/cyber-manon.png"
               type="image/png"
               class="flip-x"
               :class="{ 'celebrate-walk': celebrate }"
-            />
+            >
             <img
               src="./assets/images/cyber-manon.png"
               alt="Cyber Girl"
               class="flip-x"
               :class="{ 'celebrate-walk': celebrate }"
-            />
+            >
           </picture>
         </div>
         <BaseButton
           @click="openModal()"
           class="self-center mx-4"
           :class="{ 'shadow-cyber-rotate': celebrate }"
-          >Donate a kitty</BaseButton
-        >
+        >Donate a kitty</BaseButton>
         <div class="w-12 md:w-20 h-auto">
           <picture>
             <source
               srcset="https://res.cloudinary.com/perjor/image/upload/v1553210648/cyber-manon.webp"
               type="image/webp"
               :class="{ 'celebrate-walk': celebrate }"
-            />
+            >
             <source
               srcset="https://res.cloudinary.com/perjor/image/upload/v1553210648/cyber-manon.png"
               type="image/png"
               :class="{ 'celebrate-walk': celebrate }"
-            />
+            >
             <img
               src="./assets/images/cyber-manon.png"
               alt="Cyber Girl"
               :class="{ 'celebrate-walk-reverse': celebrate }"
-            />
+            >
           </picture>
         </div>
       </div>
@@ -74,9 +66,7 @@
           class="py-4 mx-auto flex flex-col items-center gradient-dotted"
           :top="getDocTop()"
         >
-          <h3 class="text-shadow mx-2">
-            Upload your kitty and make Manon proud!
-          </h3>
+          <h3 class="text-shadow mx-2">Upload your kitty and make Manon proud!</h3>
           <form @submit="uploadKitty()" enctype="multipart/form-data">
             <input
               type="file"
@@ -84,19 +74,14 @@
               ref="image"
               accept="image/*"
               @change="onFilePicked"
-            />
+            >
           </form>
-          <BaseButton
-            class="my-4"
-            @click="pickFile"
-            :class="{ 'shadow-cyber-rotate': uploading }"
-            >{{
-              uploading ? "Bringing kitty to Manon.." : "Choose a kitty"
-            }}</BaseButton
-          >
-          <p v-if="error_message" class="text-shadow shadow-cyber-rotate my-4">
-            {{ error_message }}
-          </p>
+          <BaseButton class="my-4" @click="pickFile" :class="{ 'shadow-cyber-rotate': uploading }">
+            {{
+            uploading ? "Bringing kitty to Manon.." : "Choose a kitty"
+            }}
+          </BaseButton>
+          <p v-if="error_message" class="text-shadow shadow-cyber-rotate my-4">{{ error_message }}</p>
 
           <template v-if="!uploading">
             <h3 class="mt-8 text-shadow">Or choose a random kitty</h3>
@@ -114,7 +99,14 @@
           </template>
         </BaseModal>
       </ZoomCenterTransition>
-      <DonatedWall :items="donatedImages" />
+      <DonatedWall :items="kittiesPaginated"/>
+
+      <BaseButton
+        class="my-4 shadow-cyber-rotate"
+        v-if="donatedImages.length > limit"
+        @click="limit += 25"
+      >Load more kitties!</BaseButton>
+
       <div
         v-if="celebrate && lastSelectedKittyUrl"
         class="absolute pin h-screen w-screen flex justify-center items-center celebrate-growAndRotate"
@@ -166,7 +158,14 @@ export default Vue.extend({
       uploading: false,
       uploaded_image: {},
       error_message: null,
+      limit: 25
     };
+  },
+
+  computed: {
+    kittiesPaginated() {
+      return this.donatedImages.slice(0, this.limit);
+    }
   },
 
   async created() {
@@ -176,7 +175,7 @@ export default Vue.extend({
 
   firestore() {
     return {
-      donatedImages: db.collection("kitties").orderBy("created", "desc").limit(50)
+      donatedImages: db.collection("kitties").orderBy("created", "desc")
     };
   },
 
@@ -209,7 +208,7 @@ export default Vue.extend({
       this.showModal = false;
       this.error_message = "";
     },
-    addKitty(id, url, type = 'random') {
+    addKitty(id, url, type = "random") {
       this.$ga.event("Donations", "Any Kitty", url);
       this.playCelebration();
       this.closeModal();
@@ -283,7 +282,7 @@ export default Vue.extend({
         this.uploaded_image = response.data;
         this.uploading = false;
         this.image_file = null;
-        this.addKitty(response.data.id, response.data.url, 'original');
+        this.addKitty(response.data.id, response.data.url, "original");
         this.$ga.event("Upload", "Custom Kitty", response.data.url);
       } catch (error) {
         this.error_message = error.response.data.message;
